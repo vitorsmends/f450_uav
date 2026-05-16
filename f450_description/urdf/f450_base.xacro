@@ -1,0 +1,41 @@
+<?xml version="1.0"?>
+
+<robot xmlns:xacro="http://www.ros.org/wiki/xacro">
+
+  <!-- World frame -->
+  <link name="world_link"/>
+
+  <!-- World -> Base -->
+  <joint name="world_to_base" type="fixed">
+    <parent link="world_link"/>
+    <child link="base_link"/>
+    <origin xyz="0 0 0" rpy="0 0 0"/>
+  </joint>
+
+  <!-- Main rigid body -->
+  <link name="base_link">
+
+    <inertial>
+      <origin xyz="0 0 0" rpy="0 0 0"/>
+
+      <mass value="1.09429"/>
+
+      <inertia
+        ixx="0.0108413"
+        ixy="2.4413e-06"
+        ixz="3.72834e-05"
+        iyy="0.011469"
+        iyz="-3.48279e-06"
+        izz="0.0199678"/>
+    </inertial>
+
+  </link>
+
+  <!-- Base -> Visual body -->
+  <joint name="base_to_body" type="fixed">
+    <parent link="base_link"/>
+    <child link="body_link"/>
+    <origin xyz="0 0 0" rpy="0 0 0"/>
+  </joint>
+
+</robot>

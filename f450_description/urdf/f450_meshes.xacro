@@ -1,0 +1,391 @@
+<?xml version="1.0"?>
+<robot xmlns:xacro="http://www.ros.org/wiki/xacro">
+
+  <link name="body_link">
+    <!-- Part esp32_dev_kit_v1 -->
+    <visual>
+      <origin xyz="0.0178007 -0.0308852 0.0523806" rpy="0 -0 -1.5708"/>
+      <geometry>
+        <mesh filename="package://f450_description/meshes/esp32_dev_kit_v1.stl"/>
+      </geometry>
+      <material name="esp32_dev_kit_v1_material">
+        <color rgba="0.25098 0.25098 0.25098 1"/>
+      </material>
+    </visual>
+    <collision>
+      <origin xyz="0.0178007 -0.0308852 0.0523806" rpy="0 -0 -1.5708"/>
+      <geometry>
+        <mesh filename="package://f450_description/meshes/esp32_dev_kit_v1.stl"/>
+      </geometry>
+    </collision>
+    <!-- Part raspberry_pi_3_b_plus -->
+    <visual>
+      <origin xyz="0.0653323 -0.0329298 0.0764926" rpy="-1.5708 0 3.14159"/>
+      <geometry>
+        <mesh filename="package://f450_description/meshes/raspberry_pi_3_b_plus.stl"/>
+      </geometry>
+      <material name="raspberry_pi_3_b_plus_material">
+        <color rgba="0.960784 0.960784 0.964706 1"/>
+      </material>
+    </visual>
+    <collision>
+      <origin xyz="0.0653323 -0.0329298 0.0764926" rpy="-1.5708 0 3.14159"/>
+      <geometry>
+        <mesh filename="package://f450_description/meshes/raspberry_pi_3_b_plus.stl"/>
+      </geometry>
+    </collision>
+    <!-- Part bottom_plate -->
+    <visual>
+      <origin xyz="0.0653685 -0.0328291 0.000583504" rpy="-0 0 1.5708"/>
+      <geometry>
+        <mesh filename="package://f450_description/meshes/bottom_plate.stl"/>
+      </geometry>
+      <material name="bottom_plate_material">
+        <color rgba="0.694118 0.101961 0.101961 1"/>
+      </material>
+    </visual>
+    <collision>
+      <origin xyz="0.0653685 -0.0328291 0.000583504" rpy="-0 0 1.5708"/>
+      <geometry>
+        <mesh filename="package://f450_description/meshes/bottom_plate.stl"/>
+      </geometry>
+    </collision>
+    <!-- Part mpu_9250 -->
+    <visual>
+      <origin xyz="0.104686 -0.0488602 0.0542192" rpy="0 -0 -1.5708"/>
+      <geometry>
+        <mesh filename="package://f450_description/meshes/mpu_9250.stl"/>
+      </geometry>
+      <material name="mpu_9250_material">
+        <color rgba="0 0 0.627451 1"/>
+      </material>
+    </visual>
+    <collision>
+      <origin xyz="0.104686 -0.0488602 0.0542192" rpy="0 -0 -1.5708"/>
+      <geometry>
+        <mesh filename="package://f450_description/meshes/mpu_9250.stl"/>
+      </geometry>
+    </collision>
+    <!-- Part battery -->
+    <visual>
+      <origin xyz="0.0655915 -0.0328291 -0.0242165" rpy="0 0 -3.14159"/>
+      <geometry>
+        <mesh filename="package://f450_description/meshes/battery.stl"/>
+      </geometry>
+      <material name="battery_material">
+        <color rgba="0.25098 0.25098 0.25098 1"/>
+      </material>
+    </visual>
+    <collision>
+      <origin xyz="0.0655915 -0.0328291 -0.0242165" rpy="0 0 -3.14159"/>
+      <geometry>
+        <mesh filename="package://f450_description/meshes/battery.stl"/>
+      </geometry>
+    </collision>
+    <!-- Part 1045_propeller -->
+    <visual>
+      <origin xyz="-0.0935326 0.126083 0.0744345" rpy="-0 0 1.5708"/>
+      <geometry>
+        <mesh filename="package://f450_description/meshes/1045_propeller.stl"/>
+      </geometry>
+      <material name="1045_propeller_material">
+        <color rgba="0.25098 0.25098 0.25098 1"/>
+      </material>
+    </visual>
+    <collision>
+      <origin xyz="-0.0935326 0.126083 0.0744345" rpy="-0 0 1.5708"/>
+      <geometry>
+        <mesh filename="package://f450_description/meshes/1045_propeller.stl"/>
+      </geometry>
+    </collision>
+    <!-- Part 1045_propeller_2 -->
+    <visual>
+      <origin xyz="0.22427 -0.191741 0.0744345" rpy="0 -0 -1.5708"/>
+      <geometry>
+        <mesh filename="package://f450_description/meshes/1045_propeller.stl"/>
+      </geometry>
+      <material name="1045_propeller_2_material">
+        <color rgba="0.25098 0.25098 0.25098 1"/>
+      </material>
+    </visual>
+    <collision>
+      <origin xyz="0.22427 -0.191741 0.0744345" rpy="0 -0 -1.5708"/>
+      <geometry>
+        <mesh filename="package://f450_description/meshes/1045_propeller.stl"/>
+      </geometry>
+    </collision>
+    <!-- Part arm -->
+    <visual>
+      <origin xyz="0.163736 -0.131207 0.0399845" rpy="0 -0 -2.35619"/>
+      <geometry>
+        <mesh filename="package://f450_description/meshes/arm.stl"/>
+      </geometry>
+      <material name="arm_material">
+        <color rgba="0.796078 0.823529 0.937255 1"/>
+      </material>
+    </visual>
+    <collision>
+      <origin xyz="0.163736 -0.131207 0.0399845" rpy="0 -0 -2.35619"/>
+      <geometry>
+        <mesh filename="package://f450_description/meshes/arm.stl"/>
+      </geometry>
+    </collision>
+    <!-- Part arm_2 -->
+    <visual>
+      <origin xyz="0.163746 0.0655383 0.0399845" rpy="-0 -0 -0.785398"/>
+      <geometry>
+        <mesh filename="package://f450_description/meshes/arm.stl"/>
+      </geometry>
+      <material name="arm_2_material">
+        <color rgba="0.796078 0.823529 0.937255 1"/>
+      </material>
+    </visual>
+    <collision>
+      <origin xyz="0.163746 0.0655383 0.0399845" rpy="-0 -0 -0.785398"/>
+      <geometry>
+        <mesh filename="package://f450_description/meshes/arm.stl"/>
+      </geometry>
+    </collision>
+    <!-- Part arm_3 -->
+    <visual>
+      <origin xyz="-0.0329989 0.065549 0.0399845" rpy="-0 0 0.785398"/>
+      <geometry>
+        <mesh filename="package://f450_description/meshes/arm.stl"/>
+      </geometry>
+      <material name="arm_3_material">
+        <color rgba="0.796078 0.823529 0.937255 1"/>
+      </material>
+    </visual>
+    <collision>
+      <origin xyz="-0.0329989 0.065549 0.0399845" rpy="-0 0 0.785398"/>
+      <geometry>
+        <mesh filename="package://f450_description/meshes/arm.stl"/>
+      </geometry>
+    </collision>
+    <!-- Part top_plate -->
+    <visual>
+      <origin xyz="0.0653685 -0.0328291 0.0756676" rpy="-0 -0 -0"/>
+      <geometry>
+        <mesh filename="package://f450_description/meshes/top_plate.stl"/>
+      </geometry>
+      <material name="top_plate_material">
+        <color rgba="0.694118 0.101961 0.101961 1"/>
+      </material>
+    </visual>
+    <collision>
+      <origin xyz="0.0653685 -0.0328291 0.0756676" rpy="-0 -0 -0"/>
+      <geometry>
+        <mesh filename="package://f450_description/meshes/top_plate.stl"/>
+      </geometry>
+    </collision>
+    <!-- Part holybro_brushless_motor_2216_880kv -->
+    <visual>
+      <origin xyz="-0.0935326 0.126083 0.0384345" rpy="0 0 -3.14159"/>
+      <geometry>
+        <mesh filename="package://f450_description/meshes/holybro_brushless_motor_2216_880kv.stl"/>
+      </geometry>
+      <material name="holybro_brushless_motor_2216_880kv_material">
+        <color rgba="0.501961 0.501961 0.501961 1"/>
+      </material>
+    </visual>
+    <collision>
+      <origin xyz="-0.0935326 0.126083 0.0384345" rpy="0 0 -3.14159"/>
+      <geometry>
+        <mesh filename="package://f450_description/meshes/holybro_brushless_motor_2216_880kv.stl"/>
+      </geometry>
+    </collision>
+    <!-- Part top_plate_2 -->
+    <visual>
+      <origin xyz="0.0653685 -0.0328291 0.0390156" rpy="0 0 3.14159"/>
+      <geometry>
+        <mesh filename="package://f450_description/meshes/top_plate__2.stl"/>
+      </geometry>
+      <material name="top_plate_2_material">
+        <color rgba="0.694118 0.101961 0.101961 1"/>
+      </material>
+    </visual>
+    <collision>
+      <origin xyz="0.0653685 -0.0328291 0.0390156" rpy="0 0 3.14159"/>
+      <geometry>
+        <mesh filename="package://f450_description/meshes/top_plate__2.stl"/>
+      </geometry>
+    </collision>
+    <!-- Part protoboard -->
+    <visual>
+      <origin xyz="0.0654307 -0.0327752 0.0398406" rpy="0 -0 -1.5708"/>
+      <geometry>
+        <mesh filename="package://f450_description/meshes/protoboard.stl"/>
+      </geometry>
+      <material name="protoboard_material">
+        <color rgba="0.627451 0.627451 0.627451 1"/>
+      </material>
+    </visual>
+    <collision>
+      <origin xyz="0.0654307 -0.0327752 0.0398406" rpy="0 -0 -1.5708"/>
+      <geometry>
+        <mesh filename="package://f450_description/meshes/protoboard.stl"/>
+      </geometry>
+    </collision>
+    <!-- Part 1045_propeller_3 -->
+    <visual>
+      <origin xyz="-0.0935433 -0.19173 0.0744345" rpy="0 0 -3.14159"/>
+      <geometry>
+        <mesh filename="package://f450_description/meshes/1045_propeller.stl"/>
+      </geometry>
+      <material name="1045_propeller_3_material">
+        <color rgba="0.25098 0.25098 0.25098 1"/>
+      </material>
+    </visual>
+    <collision>
+      <origin xyz="-0.0935433 -0.19173 0.0744345" rpy="0 0 -3.14159"/>
+      <geometry>
+        <mesh filename="package://f450_description/meshes/1045_propeller.stl"/>
+      </geometry>
+    </collision>
+    <!-- Part littlebee_spring30a -->
+    <visual>
+      <origin xyz="0.152574 -0.0983226 0.0585284" rpy="-3.14159 -0 -2.35619"/>
+      <geometry>
+        <mesh filename="package://f450_description/meshes/littlebee_spring30a.stl"/>
+      </geometry>
+      <material name="littlebee_spring30a_material">
+        <color rgba="0.866667 0.866667 0.890196 1"/>
+      </material>
+    </visual>
+    <collision>
+      <origin xyz="0.152574 -0.0983226 0.0585284" rpy="-3.14159 -0 -2.35619"/>
+      <geometry>
+        <mesh filename="package://f450_description/meshes/littlebee_spring30a.stl"/>
+      </geometry>
+    </collision>
+    <!-- Part littlebee_spring30a_2 -->
+    <visual>
+      <origin xyz="-0.00012506 -0.120035 0.0585284" rpy="-3.14159 0 2.35619"/>
+      <geometry>
+        <mesh filename="package://f450_description/meshes/littlebee_spring30a.stl"/>
+      </geometry>
+      <material name="littlebee_spring30a_2_material">
+        <color rgba="0.866667 0.866667 0.890196 1"/>
+      </material>
+    </visual>
+    <collision>
+      <origin xyz="-0.00012506 -0.120035 0.0585284" rpy="-3.14159 0 2.35619"/>
+      <geometry>
+        <mesh filename="package://f450_description/meshes/littlebee_spring30a.stl"/>
+      </geometry>
+    </collision>
+    <!-- Part holybro_brushless_motor_2216_880kv_2 -->
+    <visual>
+      <origin xyz="0.22428 0.126072 0.0384345" rpy="-0 0 1.5708"/>
+      <geometry>
+        <mesh filename="package://f450_description/meshes/holybro_brushless_motor_2216_880kv.stl"/>
+      </geometry>
+      <material name="holybro_brushless_motor_2216_880kv_2_material">
+        <color rgba="0.501961 0.501961 0.501961 1"/>
+      </material>
+    </visual>
+    <collision>
+      <origin xyz="0.22428 0.126072 0.0384345" rpy="-0 0 1.5708"/>
+      <geometry>
+        <mesh filename="package://f450_description/meshes/holybro_brushless_motor_2216_880kv.stl"/>
+      </geometry>
+    </collision>
+    <!-- Part holybro_brushless_motor_2216_880kv_3 -->
+    <visual>
+      <origin xyz="0.22427 -0.191741 0.0384345" rpy="-0 -0 0"/>
+      <geometry>
+        <mesh filename="package://f450_description/meshes/holybro_brushless_motor_2216_880kv.stl"/>
+      </geometry>
+      <material name="holybro_brushless_motor_2216_880kv_3_material">
+        <color rgba="0.501961 0.501961 0.501961 1"/>
+      </material>
+    </visual>
+    <collision>
+      <origin xyz="0.22427 -0.191741 0.0384345" rpy="-0 -0 0"/>
+      <geometry>
+        <mesh filename="package://f450_description/meshes/holybro_brushless_motor_2216_880kv.stl"/>
+      </geometry>
+    </collision>
+    <!-- Part holybro_brushless_motor_2216_880kv_4 -->
+    <visual>
+      <origin xyz="-0.0935433 -0.19173 0.0384345" rpy="0 -0 -1.5708"/>
+      <geometry>
+        <mesh filename="package://f450_description/meshes/holybro_brushless_motor_2216_880kv.stl"/>
+      </geometry>
+      <material name="holybro_brushless_motor_2216_880kv_4_material">
+        <color rgba="0.501961 0.501961 0.501961 1"/>
+      </material>
+    </visual>
+    <collision>
+      <origin xyz="-0.0935433 -0.19173 0.0384345" rpy="0 -0 -1.5708"/>
+      <geometry>
+        <mesh filename="package://f450_description/meshes/holybro_brushless_motor_2216_880kv.stl"/>
+      </geometry>
+    </collision>
+    <!-- Part arm_4 -->
+    <visual>
+      <origin xyz="-0.0330096 -0.131196 0.0399845" rpy="0 0 2.35619"/>
+      <geometry>
+        <mesh filename="package://f450_description/meshes/arm.stl"/>
+      </geometry>
+      <material name="arm_4_material">
+        <color rgba="0.796078 0.823529 0.937255 1"/>
+      </material>
+    </visual>
+    <collision>
+      <origin xyz="-0.0330096 -0.131196 0.0399845" rpy="0 0 2.35619"/>
+      <geometry>
+        <mesh filename="package://f450_description/meshes/arm.stl"/>
+      </geometry>
+    </collision>
+    <!-- Part 1045_propeller_4 -->
+    <visual>
+      <origin xyz="0.22428 0.126072 0.0744345" rpy="-0 -0 0"/>
+      <geometry>
+        <mesh filename="package://f450_description/meshes/1045_propeller.stl"/>
+      </geometry>
+      <material name="1045_propeller_4_material">
+        <color rgba="0.25098 0.25098 0.25098 1"/>
+      </material>
+    </visual>
+    <collision>
+      <origin xyz="0.22428 0.126072 0.0744345" rpy="-0 -0 0"/>
+      <geometry>
+        <mesh filename="package://f450_description/meshes/1045_propeller.stl"/>
+      </geometry>
+    </collision>
+    <!-- Part littlebee_spring30a_3 -->
+    <visual>
+      <origin xyz="0.130862 0.0543768 0.0585284" rpy="3.14159 -0 -0.785398"/>
+      <geometry>
+        <mesh filename="package://f450_description/meshes/littlebee_spring30a.stl"/>
+      </geometry>
+      <material name="littlebee_spring30a_3_material">
+        <color rgba="0.866667 0.866667 0.890196 1"/>
+      </material>
+    </visual>
+    <collision>
+      <origin xyz="0.130862 0.0543768 0.0585284" rpy="3.14159 -0 -0.785398"/>
+      <geometry>
+        <mesh filename="package://f450_description/meshes/littlebee_spring30a.stl"/>
+      </geometry>
+    </collision>
+    <!-- Part littlebee_spring30a_4 -->
+    <visual>
+      <origin xyz="-0.0224286 0.0320733 0.0585284" rpy="3.14159 -0 0.785398"/>
+      <geometry>
+        <mesh filename="package://f450_description/meshes/littlebee_spring30a.stl"/>
+      </geometry>
+      <material name="littlebee_spring30a_4_material">
+        <color rgba="0.866667 0.866667 0.890196 1"/>
+      </material>
+    </visual>
+    <collision>
+      <origin xyz="-0.0224286 0.0320733 0.0585284" rpy="3.14159 -0 0.785398"/>
+      <geometry>
+        <mesh filename="package://f450_description/meshes/littlebee_spring30a.stl"/>
+      </geometry>
+    </collision>
+  </link>
+
+</robot>

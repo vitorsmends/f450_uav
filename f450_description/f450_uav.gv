@@ -1,0 +1,29 @@
+digraph G {
+node [shape=box];
+"base_link" [label="base_link"];
+"body_link" [label="body_link"];
+"battery_link" [label="battery_link"];
+"imu_link" [label="imu_link"];
+"raspberry_pi_link" [label="raspberry_pi_link"];
+"rotor_1_link" [label="rotor_1_link"];
+"rotor_2_link" [label="rotor_2_link"];
+"rotor_3_link" [label="rotor_3_link"];
+"rotor_4_link" [label="rotor_4_link"];
+node [shape=ellipse, color=blue, fontcolor=blue];
+"base_link" -> "base_to_body" [label="xyz: 0 0 0 \nrpy: 0 -0 0"]
+"base_to_body" -> "body_link"
+"body_link" -> "body_to_battery" [label="xyz: 0.0655915 -0.0328291 -0.0242165 \nrpy: 0 0 -3.14159"]
+"body_to_battery" -> "battery_link"
+"body_link" -> "body_to_imu" [label="xyz: 0.104686 -0.0488602 0.0542192 \nrpy: 0 0 -1.5708"]
+"body_to_imu" -> "imu_link"
+"body_link" -> "body_to_raspberry_pi" [label="xyz: 0.0653323 -0.0329298 0.0764926 \nrpy: -1.5708 -0 3.14159"]
+"body_to_raspberry_pi" -> "raspberry_pi_link"
+"body_link" -> "body_to_rotor_1" [label="xyz: -0.0935326 0.126083 0.0744345 \nrpy: 0 -0 1.5708"]
+"body_to_rotor_1" -> "rotor_1_link"
+"body_link" -> "body_to_rotor_2" [label="xyz: 0.22428 0.126072 0.0744345 \nrpy: 0 -0 0"]
+"body_to_rotor_2" -> "rotor_2_link"
+"body_link" -> "body_to_rotor_3" [label="xyz: 0.22427 -0.191741 0.0744345 \nrpy: 0 0 -1.5708"]
+"body_to_rotor_3" -> "rotor_3_link"
+"body_link" -> "body_to_rotor_4" [label="xyz: -0.0935433 -0.19173 0.0744345 \nrpy: 0 0 -3.14159"]
+"body_to_rotor_4" -> "rotor_4_link"
+}

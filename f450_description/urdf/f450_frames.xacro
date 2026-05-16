@@ -1,0 +1,75 @@
+<?xml version="1.0"?>
+
+<robot xmlns:xacro="http://www.ros.org/wiki/xacro">
+
+  <!-- IMU frame -->
+  <link name="imu_link"/>
+
+  <joint name="body_to_imu" type="fixed">
+    <parent link="body_link"/>
+    <child link="imu_link"/>
+    <origin xyz="0.104686 -0.0488602 0.0542192"
+            rpy="0 0 -1.5708"/>
+  </joint>
+
+  <!-- Raspberry Pi frame -->
+  <link name="raspberry_pi_link"/>
+
+  <joint name="body_to_raspberry_pi" type="fixed">
+    <parent link="body_link"/>
+    <child link="raspberry_pi_link"/>
+    <origin xyz="0.0653323 -0.0329298 0.0764926"
+            rpy="-1.5708 0 3.14159"/>
+  </joint>
+
+  <!-- Battery frame -->
+  <link name="battery_link"/>
+
+  <joint name="body_to_battery" type="fixed">
+    <parent link="body_link"/>
+    <child link="battery_link"/>
+    <origin xyz="0.0655915 -0.0328291 -0.0242165"
+            rpy="0 0 -3.14159"/>
+  </joint>
+
+  <!-- Rotor 1 -->
+  <link name="rotor_1_link"/>
+
+  <joint name="body_to_rotor_1" type="fixed">
+    <parent link="body_link"/>
+    <child link="rotor_1_link"/>
+    <origin xyz="-0.0935326 0.126083 0.0744345"
+            rpy="0 0 1.5708"/>
+  </joint>
+
+  <!-- Rotor 2 -->
+  <link name="rotor_2_link"/>
+
+  <joint name="body_to_rotor_2" type="fixed">
+    <parent link="body_link"/>
+    <child link="rotor_2_link"/>
+    <origin xyz="0.22428 0.126072 0.0744345"
+            rpy="0 0 0"/>
+  </joint>
+
+  <!-- Rotor 3 -->
+  <link name="rotor_3_link"/>
+
+  <joint name="body_to_rotor_3" type="fixed">
+    <parent link="body_link"/>
+    <child link="rotor_3_link"/>
+    <origin xyz="0.22427 -0.191741 0.0744345"
+            rpy="0 0 -1.5708"/>
+  </joint>
+
+  <!-- Rotor 4 -->
+  <link name="rotor_4_link"/>
+
+  <joint name="body_to_rotor_4" type="fixed">
+    <parent link="body_link"/>
+    <child link="rotor_4_link"/>
+    <origin xyz="-0.0935433 -0.19173 0.0744345"
+            rpy="0 0 -3.14159"/>
+  </joint>
+
+</robot>

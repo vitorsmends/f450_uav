@@ -1,0 +1,11 @@
+{
+  "url": "https://cad.onshape.com/documents/eabe3530e827b594760d5147/w/40df5cfaaab61d9711ab5c88/e/db3a2be80f20127e1a4178f8",
+
+  "output_format": "urdf",
+
+  "robot_name": "f450_uav",
+
+  "package_name": "f450_description",
+
+  "mesh_format": "stl"
+}

@@ -1,0 +1,43 @@
+<?xml version="1.0"?>
+
+<robot xmlns:xacro="http://www.ros.org/wiki/xacro">
+
+  <!--
+    Placeholder for ros2_control.
+
+    Important:
+    This F450 model currently has only fixed joints.
+    ros2_control is useful for actuated joints, but the drone flight
+    dynamics should be handled by a multirotor Gazebo plugin or by a
+    custom force/torque application system.
+
+    Keep this file separated so rotor joints, gimbals, or other actuated
+    mechanisms can be added later without polluting the main URDF.
+  -->
+
+  <xacro:arg name="use_ros2_control" default="false"/>
+
+  <xacro:if value="$(arg use_ros2_control)">
+
+    <ros2_control name="F450System" type="system">
+
+      <hardware>
+        <!-- Placeholder only. Replace when real actuated joints exist. -->
+        <plugin>gz_ros2_control/GazeboSimSystem</plugin>
+      </hardware>
+
+    </ros2_control>
+
+    <gazebo>
+      <plugin
+        filename="libgz_ros2_control-system.so"
+        name="gz_ros2_control::GazeboSimROS2ControlPlugin">
+
+        <parameters>$(find f450_description)/config/ros2_control.yaml</parameters>
+
+      </plugin>
+    </gazebo>
+
+  </xacro:if>
+
+</robot>

@@ -1,0 +1,13 @@
+{
+    "configuration": "default",
+    "documentId": "eabe3530e827b594760d5147",
+    "documentMicroversion": "b91ace61688c6b17dd02f83b",
+    "elementId": "00801dde868873120b0a012a",
+    "fullConfiguration": "default",
+    "id": "M/AHZq4OG5brl3sgk",
+    "isStandardContent": false,
+    "name": "ESP32 dev Kit v1 <1>",
+    "partId": "KFXG",
+    "suppressed": false,
+    "type": "Part"
+}

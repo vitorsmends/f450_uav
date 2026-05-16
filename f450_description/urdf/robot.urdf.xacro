@@ -1,0 +1,11 @@
+<?xml version="1.0"?>
+
+<robot name="f450_uav" xmlns:xacro="http://www.ros.org/wiki/xacro">
+
+  <xacro:include filename="$(find f450_description)/urdf/f450_base.xacro"/>
+  <xacro:include filename="$(find f450_description)/urdf/f450_meshes.xacro"/>
+  <xacro:include filename="$(find f450_description)/urdf/f450_frames.xacro"/>
+  <xacro:include filename="$(find f450_description)/urdf/f450_gazebo.xacro"/>
+  <xacro:include filename="$(find f450_description)/urdf/f450_ros2_control.xacro"/>
+
+</robot>

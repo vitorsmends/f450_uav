@@ -1,0 +1,6 @@
+#!/home/mendes/Workspaces/f450_ws/src/f450_uav/f450_description/scripts/.venv/bin/python3
+import sys
+from onshape_to_robot import bullet
+if __name__ == '__main__':
+    sys.argv[0] = sys.argv[0].removesuffix('.exe')
+    sys.exit(bullet.main())
