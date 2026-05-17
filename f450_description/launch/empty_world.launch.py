@@ -115,10 +115,33 @@ def generate_launch_description():
         actions=[spawn_robot],
     )
 
+    camera_bridge = Node(
+        package="ros_ign_bridge",
+        executable="parameter_bridge",
+        name="camera_bridge",
+        arguments=[
+            "/f450/camera/image@sensor_msgs/msg/Image[ignition.msgs.Image",
+            "/f450/camera/camera_info@sensor_msgs/msg/CameraInfo[ignition.msgs.CameraInfo",
+        ],
+        output="screen",
+    )
+
+    imu_bridge = Node(
+        package="ros_ign_bridge",
+        executable="parameter_bridge",
+        name="imu_bridge",
+        arguments=[
+            "/f450/imu@sensor_msgs/msg/Imu[ignition.msgs.IMU",
+        ],
+        output="screen",
+    )
+
     return LaunchDescription([
         ign_resource_path,
         OpaqueFunction(function=generate_urdf),
         gazebo,
         robot_state_publisher,
         delayed_spawn_robot,
+        camera_bridge,
+        imu_bridge,
     ])

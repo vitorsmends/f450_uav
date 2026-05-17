@@ -67,7 +67,33 @@
     </sensor>
   </gazebo>
 
-  <!-- Rotor frame markers for future multirotor plugin -->
+  <!-- Camera sensor attached to camera_link -->
+  <gazebo reference="camera_link">
+    <sensor name="camera_sensor" type="camera">
+      <always_on>true</always_on>
+      <update_rate>30</update_rate>
+      <visualize>true</visualize>
+      <topic>/f450/camera/image</topic>
+
+      <camera>
+        <horizontal_fov>1.047</horizontal_fov>
+
+        <image>
+          <width>640</width>
+          <height>480</height>
+          <format>R8G8B8</format>
+        </image>
+
+        <clip>
+          <near>0.05</near>
+          <far>100.0</far>
+        </clip>
+      </camera>
+    </sensor>
+  </gazebo>
+
+
+  <!-- Rotor visual/material tags -->
   <gazebo reference="rotor_1_link">
     <material>Gazebo/Blue</material>
   </gazebo>
@@ -84,4 +110,282 @@
     <material>Gazebo/Blue</material>
   </gazebo>
 
+ 
+  <!--
+    ============================================================================
+    F450 Multirotor Motor Model Configuration
+    ============================================================================
+
+    Rotor layout (top view):
+
+              Front (+X)
+
+          rotor_1       rotor_2
+             CCW           CW
+
+          rotor_4       rotor_3
+              CW          CCW
+
+              Rear (-X)
+
+    Motor and propeller setup:
+      - Motor: 2212 920KV
+      - Propeller: 9.4x4.3
+      - Battery: 3S LiPo (11.1V)
+
+    Experimental measurements with propeller:
+      RPM_max ≈ 7900 rpm
+
+    Angular velocity conversion:
+      omega = RPM * 2*pi / 60
+
+      omega_max =
+        7900 * 2*pi / 60
+
+      omega_max ≈ 827 rad/s
+
+    Estimated maximum thrust:
+      T_max ≈ 700 gf
+      T_max ≈ 6.8647 N
+
+    Rotor thrust model:
+      T = k_f * omega^2
+
+    Therefore:
+      k_f = T_max / omega_max^2
+
+      k_f =
+        6.8647 / 827^2
+
+      k_f ≈ 1.00e-05 N.s^2/rad^2
+
+    Hover estimation:
+      vehicle mass = 1.25653 kg
+
+      vehicle weight:
+        W = m * g
+        W = 12.32 N
+
+      hover thrust per rotor:
+        T_hover = W / 4
+        T_hover ≈ 3.08 N
+
+      hover angular velocity:
+        omega_hover =
+          sqrt(T_hover / k_f)
+
+        omega_hover ≈ 555 rad/s
+
+    Notes:
+      - These values are first-order estimates.
+      - Parameters should later be calibrated with a real thrust stand.
+      - Increased time constants improve simulation realism and stability.
+    ============================================================================
+  -->
+
+  <!-- Shared motor parameters -->
+  <xacro:property name="motor_time_constant_up" value="0.08"/>
+  <xacro:property name="motor_time_constant_down" value="0.12"/>
+
+  <xacro:property name="motor_max_rot_velocity" value="827.0"/>
+  <xacro:property name="motor_constant" value="1.00e-05"/>
+  <xacro:property name="motor_moment_constant" value="0.012"/>
+
+  <xacro:property name="rotor_drag_coefficient" value="8.0e-05"/>
+  <xacro:property name="rolling_moment_coefficient" value="1.0e-06"/>
+
+  <xacro:property name="rotor_velocity_slowdown_sim" value="10"/>
+
+  <!-- Rotor 1: front-left, CCW -->
+  <gazebo>
+    <plugin
+      filename="libignition-gazebo6-multicopter-motor-model-system.so"
+      name="ignition::gazebo::systems::MulticopterMotorModel">
+
+      <robotNamespace>f450_uav</robotNamespace>
+
+      <jointName>body_to_rotor_1</jointName>
+      <linkName>rotor_1_link</linkName>
+
+      <motorNumber>0</motorNumber>
+      <turningDirection>ccw</turningDirection>
+
+      <timeConstantUp>${motor_time_constant_up}</timeConstantUp>
+      <timeConstantDown>${motor_time_constant_down}</timeConstantDown>
+
+      <maxRotVelocity>${motor_max_rot_velocity}</maxRotVelocity>
+
+      <motorConstant>${motor_constant}</motorConstant>
+      <momentConstant>${motor_moment_constant}</momentConstant>
+
+      <commandSubTopic>command/motor_speed</commandSubTopic>
+      <motorSpeedPubTopic>motor_speed/0</motorSpeedPubTopic>
+
+      <rotorDragCoefficient>
+        ${rotor_drag_coefficient}
+      </rotorDragCoefficient>
+
+      <rollingMomentCoefficient>
+        ${rolling_moment_coefficient}
+      </rollingMomentCoefficient>
+
+      <rotorVelocitySlowdownSim>
+        ${rotor_velocity_slowdown_sim}
+      </rotorVelocitySlowdownSim>
+
+      <motorType>velocity</motorType>
+    </plugin>
+  </gazebo>
+
+  <!-- Rotor 2: front-right, CW -->
+  <gazebo>
+    <plugin
+      filename="libignition-gazebo6-multicopter-motor-model-system.so"
+      name="ignition::gazebo::systems::MulticopterMotorModel">
+
+      <robotNamespace>f450_uav</robotNamespace>
+
+      <jointName>body_to_rotor_2</jointName>
+      <linkName>rotor_2_link</linkName>
+
+      <motorNumber>1</motorNumber>
+      <turningDirection>cw</turningDirection>
+
+      <timeConstantUp>${motor_time_constant_up}</timeConstantUp>
+      <timeConstantDown>${motor_time_constant_down}</timeConstantDown>
+
+      <maxRotVelocity>${motor_max_rot_velocity}</maxRotVelocity>
+
+      <motorConstant>${motor_constant}</motorConstant>
+      <momentConstant>${motor_moment_constant}</momentConstant>
+
+      <commandSubTopic>command/motor_speed</commandSubTopic>
+      <motorSpeedPubTopic>motor_speed/1</motorSpeedPubTopic>
+
+      <rotorDragCoefficient>
+        ${rotor_drag_coefficient}
+      </rotorDragCoefficient>
+
+      <rollingMomentCoefficient>
+        ${rolling_moment_coefficient}
+      </rollingMomentCoefficient>
+
+      <rotorVelocitySlowdownSim>
+        ${rotor_velocity_slowdown_sim}
+      </rotorVelocitySlowdownSim>
+
+      <motorType>velocity</motorType>
+    </plugin>
+  </gazebo>
+
+  <!-- Rotor 3: rear-right, CCW -->
+  <gazebo>
+    <plugin
+      filename="libignition-gazebo6-multicopter-motor-model-system.so"
+      name="ignition::gazebo::systems::MulticopterMotorModel">
+
+      <robotNamespace>f450_uav</robotNamespace>
+
+      <jointName>body_to_rotor_3</jointName>
+      <linkName>rotor_3_link</linkName>
+
+      <motorNumber>2</motorNumber>
+      <turningDirection>ccw</turningDirection>
+
+      <timeConstantUp>${motor_time_constant_up}</timeConstantUp>
+      <timeConstantDown>${motor_time_constant_down}</timeConstantDown>
+
+      <maxRotVelocity>${motor_max_rot_velocity}</maxRotVelocity>
+
+      <motorConstant>${motor_constant}</motorConstant>
+      <momentConstant>${motor_moment_constant}</momentConstant>
+
+      <commandSubTopic>command/motor_speed</commandSubTopic>
+      <motorSpeedPubTopic>motor_speed/2</motorSpeedPubTopic>
+
+      <rotorDragCoefficient>
+        ${rotor_drag_coefficient}
+      </rotorDragCoefficient>
+
+      <rollingMomentCoefficient>
+        ${rolling_moment_coefficient}
+      </rollingMomentCoefficient>
+
+      <rotorVelocitySlowdownSim>
+        ${rotor_velocity_slowdown_sim}
+      </rotorVelocitySlowdownSim>
+
+      <motorType>velocity</motorType>
+    </plugin>
+  </gazebo>
+
+  <!-- Rotor 4: rear-left, CW -->
+  <gazebo>
+    <plugin
+      filename="libignition-gazebo6-multicopter-motor-model-system.so"
+      name="ignition::gazebo::systems::MulticopterMotorModel">
+
+      <robotNamespace>f450_uav</robotNamespace>
+
+      <jointName>body_to_rotor_4</jointName>
+      <linkName>rotor_4_link</linkName>
+
+      <motorNumber>3</motorNumber>
+      <turningDirection>cw</turningDirection>
+
+      <timeConstantUp>${motor_time_constant_up}</timeConstantUp>
+      <timeConstantDown>${motor_time_constant_down}</timeConstantDown>
+
+      <maxRotVelocity>${motor_max_rot_velocity}</maxRotVelocity>
+
+      <motorConstant>${motor_constant}</motorConstant>
+      <momentConstant>${motor_moment_constant}</momentConstant>
+
+      <commandSubTopic>command/motor_speed</commandSubTopic>
+      <motorSpeedPubTopic>motor_speed/3</motorSpeedPubTopic>
+
+      <rotorDragCoefficient>
+        ${rotor_drag_coefficient}
+      </rotorDragCoefficient>
+
+      <rollingMomentCoefficient>
+        ${rolling_moment_coefficient}
+      </rollingMomentCoefficient>
+
+      <rotorVelocitySlowdownSim>
+        ${rotor_velocity_slowdown_sim}
+      </rotorVelocitySlowdownSim>
+
+      <motorType>velocity</motorType>
+    </plugin>
+  </gazebo>
+
 </robot>
+
+
+<!-- My tests were as follows.
+
+No Load.
+
+M1 = .47A, 10,400rpm, 11.67 V, 891 Kv.
+M2 = .54A, 10,450 rpm, 11.73V, 890 Kv.
+M3 = .50A, 10,200rpm, 11.62V, 878 Kv.
+M4 = .44A, 10,150, rpm, 11.58V, 876Kv.
+
+
+With Stock propeller DJi 9.4 x 4.3
+
+Mi = 8.14A, 7,800rpm, 11.36 V,% NLS. 77.1
+M2 = 8.28A, 7,900 rpm, 11.40 V,% NLS. 77.9
+M3 = 7.86A, 7,900rpm, 11.31 V,% NLS. 79.6
+M4 = 7.79A, 7,800, rpm, 11.28 V,% NLS.78.9
+
+
+This motor is not you can put bigger prop because even with this motorine is quite hot, but not enough to consider not accelerate fully.
+Practically this limit in its 94 watts.
+94 watts between weight 50 grams is 1.88 watts per gram.
+
+Nothing to do with what many brands claim 3 or 4 watts per gram.
+
+In multicopters, 2 to 2.4 watts per gram is much longer.
+Avoid overheating to eliminate accidents.  -->

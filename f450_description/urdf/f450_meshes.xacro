@@ -50,6 +50,22 @@
         <mesh filename="package://f450_description/meshes/bottom_plate.stl"/>
       </geometry>
     </collision>
+    <!-- Part camera_support -->
+    <visual>
+      <origin xyz="0.0658056 -0.104579 -0.0032165" rpy="0 0 -3.14159"/>
+      <geometry>
+        <mesh filename="package://f450_description/meshes/camera_support.stl"/>
+      </geometry>
+      <material name="camera_support_material">
+        <color rgba="0.25098 0.25098 0.25098 1"/>
+      </material>
+    </visual>
+    <collision>
+      <origin xyz="0.0658056 -0.104579 -0.0032165" rpy="0 0 -3.14159"/>
+      <geometry>
+        <mesh filename="package://f450_description/meshes/camera_support.stl"/>
+      </geometry>
+    </collision>
     <!-- Part mpu_9250 -->
     <visual>
       <origin xyz="0.104686 -0.0488602 0.0542192" rpy="0 -0 -1.5708"/>
@@ -160,6 +176,22 @@
       <origin xyz="-0.0329989 0.065549 0.0399845" rpy="-0 0 0.785398"/>
       <geometry>
         <mesh filename="package://f450_description/meshes/arm.stl"/>
+      </geometry>
+    </collision>
+    <!-- Part leg -->
+    <visual>
+      <origin xyz="0.0183105 0.00715784 -0.000217496" rpy="-3.14159 0 0.785398"/>
+      <geometry>
+        <mesh filename="package://f450_description/meshes/leg.stl"/>
+      </geometry>
+      <material name="leg_material">
+        <color rgba="0.25098 0.25098 0.25098 1"/>
+      </material>
+    </visual>
+    <collision>
+      <origin xyz="0.0183105 0.00715784 -0.000217496" rpy="-3.14159 0 0.785398"/>
+      <geometry>
+        <mesh filename="package://f450_description/meshes/leg.stl"/>
       </geometry>
     </collision>
     <!-- Part top_plate -->
@@ -290,6 +322,22 @@
         <mesh filename="package://f450_description/meshes/holybro_brushless_motor_2216_880kv.stl"/>
       </geometry>
     </collision>
+    <!-- Part logitech_c270b -->
+    <visual>
+      <origin xyz="0.0528721 -0.106185 -0.0215468" rpy="-1.5708 -0 0"/>
+      <geometry>
+        <mesh filename="package://f450_description/meshes/logitech_c270b.stl"/>
+      </geometry>
+      <material name="logitech_c270b_material">
+        <color rgba="0.294118 0.294118 0.294118 1"/>
+      </material>
+    </visual>
+    <collision>
+      <origin xyz="0.0528721 -0.106185 -0.0215468" rpy="-1.5708 -0 0"/>
+      <geometry>
+        <mesh filename="package://f450_description/meshes/logitech_c270b.stl"/>
+      </geometry>
+    </collision>
     <!-- Part holybro_brushless_motor_2216_880kv_3 -->
     <visual>
       <origin xyz="0.22427 -0.191741 0.0384345" rpy="-0 -0 0"/>
@@ -306,6 +354,22 @@
         <mesh filename="package://f450_description/meshes/holybro_brushless_motor_2216_880kv.stl"/>
       </geometry>
     </collision>
+    <!-- Part leg_2 -->
+    <visual>
+      <origin xyz="0.105355 0.0142289 -0.000217496" rpy="-3.14159 -0 -0.785398"/>
+      <geometry>
+        <mesh filename="package://f450_description/meshes/leg.stl"/>
+      </geometry>
+      <material name="leg_2_material">
+        <color rgba="0.25098 0.25098 0.25098 1"/>
+      </material>
+    </visual>
+    <collision>
+      <origin xyz="0.105355 0.0142289 -0.000217496" rpy="-3.14159 -0 -0.785398"/>
+      <geometry>
+        <mesh filename="package://f450_description/meshes/leg.stl"/>
+      </geometry>
+    </collision>
     <!-- Part holybro_brushless_motor_2216_880kv_4 -->
     <visual>
       <origin xyz="-0.0935433 -0.19173 0.0384345" rpy="0 -0 -1.5708"/>
@@ -320,6 +384,38 @@
       <origin xyz="-0.0935433 -0.19173 0.0384345" rpy="0 -0 -1.5708"/>
       <geometry>
         <mesh filename="package://f450_description/meshes/holybro_brushless_motor_2216_880kv.stl"/>
+      </geometry>
+    </collision>
+    <!-- Part leg_3 -->
+    <visual>
+      <origin xyz="0.0253816 -0.079887 -0.000217496" rpy="-3.14159 0 2.35619"/>
+      <geometry>
+        <mesh filename="package://f450_description/meshes/leg.stl"/>
+      </geometry>
+      <material name="leg_3_material">
+        <color rgba="0.25098 0.25098 0.25098 1"/>
+      </material>
+    </visual>
+    <collision>
+      <origin xyz="0.0253816 -0.079887 -0.000217496" rpy="-3.14159 0 2.35619"/>
+      <geometry>
+        <mesh filename="package://f450_description/meshes/leg.stl"/>
+      </geometry>
+    </collision>
+    <!-- Part logitech_c270c -->
+    <visual>
+      <origin xyz="0.0528721 -0.0398885 -0.011086" rpy="1.74533 -0 0"/>
+      <geometry>
+        <mesh filename="package://f450_description/meshes/logitech_c270c.stl"/>
+      </geometry>
+      <material name="logitech_c270c_material">
+        <color rgba="0.294118 0.294118 0.294118 1"/>
+      </material>
+    </visual>
+    <collision>
+      <origin xyz="0.0528721 -0.0398885 -0.011086" rpy="1.74533 -0 0"/>
+      <geometry>
+        <mesh filename="package://f450_description/meshes/logitech_c270c.stl"/>
       </geometry>
     </collision>
     <!-- Part arm_4 -->
@@ -352,6 +448,22 @@
       <origin xyz="0.22428 0.126072 0.0744345" rpy="-0 -0 0"/>
       <geometry>
         <mesh filename="package://f450_description/meshes/1045_propeller.stl"/>
+      </geometry>
+    </collision>
+    <!-- Part leg_4 -->
+    <visual>
+      <origin xyz="0.112426 -0.0728159 -0.000217496" rpy="-3.14159 -0 -2.35619"/>
+      <geometry>
+        <mesh filename="package://f450_description/meshes/leg.stl"/>
+      </geometry>
+      <material name="leg_4_material">
+        <color rgba="0.25098 0.25098 0.25098 1"/>
+      </material>
+    </visual>
+    <collision>
+      <origin xyz="0.112426 -0.0728159 -0.000217496" rpy="-3.14159 -0 -2.35619"/>
+      <geometry>
+        <mesh filename="package://f450_description/meshes/leg.stl"/>
       </geometry>
     </collision>
     <!-- Part littlebee_spring30a_3 -->
@@ -387,5 +499,6 @@
       </geometry>
     </collision>
   </link>
+
 
 </robot>

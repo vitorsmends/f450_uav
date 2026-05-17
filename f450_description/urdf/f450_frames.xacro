@@ -32,44 +32,191 @@
             rpy="0 0 -3.14159"/>
   </joint>
 
-  <!-- Rotor 1 -->
-  <link name="rotor_1_link"/>
+  <!-- Camera frame -->
+  <link name="camera_link"/>
 
-  <joint name="body_to_rotor_1" type="fixed">
+  <joint name="body_to_camera" type="fixed">
+    <parent link="body_link"/>
+    <child link="camera_link"/>
+    <origin xyz="0.0528721 -0.106185 -0.0215468"
+            rpy="-1.5708 0 0"/>
+  </joint>
+
+  <!--
+    Rotor 1 joint.
+
+    Front-left rotor.
+    Rotation direction: CCW.
+
+    Continuous joint is required by the Gazebo multicopter
+    motor model plugin.
+
+    Rotor axis:
+      +Z body axis
+  -->
+  <link name="rotor_1_link">
+    <inertial>
+      <origin xyz="0 0 0" rpy="0 0 0"/>
+      <mass value="0.015"/>
+      <inertia
+        ixx="1.0e-05"
+        ixy="0.0"
+        ixz="0.0"
+        iyy="1.0e-05"
+        iyz="0.0"
+        izz="2.0e-05"/>
+    </inertial>
+  </link>
+
+  <joint name="body_to_rotor_1" type="continuous">
     <parent link="body_link"/>
     <child link="rotor_1_link"/>
+
     <origin xyz="-0.0935326 0.126083 0.0744345"
             rpy="0 0 1.5708"/>
+
+    <axis xyz="0 0 1"/>
+
+    <limit
+      effort="100.0"
+      velocity="2000.0"/>
+
+    <dynamics
+      damping="0.0"
+      friction="0.0"/>
   </joint>
 
-  <!-- Rotor 2 -->
-  <link name="rotor_2_link"/>
 
-  <joint name="body_to_rotor_2" type="fixed">
+  <!--
+    Rotor 2 joint.
+
+    Front-right rotor.
+    Rotation direction: CW.
+
+    Continuous joint is required by the Gazebo multicopter
+    motor model plugin.
+
+    Rotor axis:
+      +Z body axis
+  -->
+  <link name="rotor_2_link">
+    <inertial>
+      <origin xyz="0 0 0" rpy="0 0 0"/>
+      <mass value="0.015"/>
+      <inertia
+        ixx="1.0e-05"
+        ixy="0.0"
+        ixz="0.0"
+        iyy="1.0e-05"
+        iyz="0.0"
+        izz="2.0e-05"/>
+    </inertial>
+  </link>
+  
+  <joint name="body_to_rotor_2" type="continuous">
     <parent link="body_link"/>
     <child link="rotor_2_link"/>
+
     <origin xyz="0.22428 0.126072 0.0744345"
             rpy="0 0 0"/>
+
+    <axis xyz="0 0 1"/>
+
+    <limit
+      effort="100.0"
+      velocity="2000.0"/>
+
+    <dynamics
+      damping="0.0"
+      friction="0.0"/>
   </joint>
 
-  <!-- Rotor 3 -->
-  <link name="rotor_3_link"/>
 
-  <joint name="body_to_rotor_3" type="fixed">
+  <!--
+    Rotor 3 joint.
+
+    Rear-right rotor.
+    Rotation direction: CCW.
+
+    Continuous joint is required by the Gazebo multicopter
+    motor model plugin.
+
+    Rotor axis:
+      +Z body axis
+  -->
+  <link name="rotor_3_link">
+    <inertial>
+      <origin xyz="0 0 0" rpy="0 0 0"/>
+      <mass value="0.015"/>
+      <inertia
+        ixx="1.0e-05"
+        ixy="0.0"
+        ixz="0.0"
+        iyy="1.0e-05"
+        iyz="0.0"
+        izz="2.0e-05"/>
+    </inertial>
+  </link>
+  <joint name="body_to_rotor_3" type="continuous">
     <parent link="body_link"/>
     <child link="rotor_3_link"/>
+
     <origin xyz="0.22427 -0.191741 0.0744345"
             rpy="0 0 -1.5708"/>
+
+    <axis xyz="0 0 1"/>
+
+    <limit
+      effort="100.0"
+      velocity="2000.0"/>
+
+    <dynamics
+      damping="0.0"
+      friction="0.0"/>
   </joint>
 
-  <!-- Rotor 4 -->
-  <link name="rotor_4_link"/>
 
-  <joint name="body_to_rotor_4" type="fixed">
+  <!--
+    Rotor 4 joint.
+
+    Rear-left rotor.
+    Rotation direction: CW.
+
+    Continuous joint is required by the Gazebo multicopter
+    motor model plugin.
+
+    Rotor axis:
+      +Z body axis
+  -->
+  <link name="rotor_4_link">
+    <inertial>
+      <origin xyz="0 0 0" rpy="0 0 0"/>
+      <mass value="0.015"/>
+      <inertia
+        ixx="1.0e-05"
+        ixy="0.0"
+        ixz="0.0"
+        iyy="1.0e-05"
+        iyz="0.0"
+        izz="2.0e-05"/>
+    </inertial>
+  </link>
+  <joint name="body_to_rotor_4" type="continuous">
     <parent link="body_link"/>
     <child link="rotor_4_link"/>
+
     <origin xyz="-0.0935433 -0.19173 0.0744345"
             rpy="0 0 -3.14159"/>
+
+    <axis xyz="0 0 1"/>
+
+    <limit
+      effort="100.0"
+      velocity="2000.0"/>
+
+    <dynamics
+      damping="0.0"
+      friction="0.0"/>
   </joint>
 
 </robot>

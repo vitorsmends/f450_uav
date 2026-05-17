@@ -1,0 +1,13 @@
+{
+    "configuration": "default",
+    "documentId": "eabe3530e827b594760d5147",
+    "documentMicroversion": "69770fc050694f3218d28b74",
+    "elementId": "8b382ec3e3025793275c0224",
+    "fullConfiguration": "default",
+    "id": "M3XYhXYem0dT22UjB",
+    "isStandardContent": false,
+    "name": "MPU-9250 <1>",
+    "partId": "KFfI",
+    "suppressed": false,
+    "type": "Part"
+}

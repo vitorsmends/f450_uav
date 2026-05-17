@@ -3,80 +3,12 @@
 <!-- Onshape https://cad.onshape.com/documents/eabe3530e827b594760d5147/w/40df5cfaaab61d9711ab5c88/e/db3a2be80f20127e1a4178f8 -->
 <robot name="f450_uav">
   <!-- Link bottom_plate -->
-  <link name="base_link">
+  <link name="bottom_plate">
     <inertial>
-      <origin xyz="0 0 0" rpy="0 0 0"/>
-      <mass value="1.09429"/>
-      <inertia
-        ixx="0.0108413"
-        ixy="2.4413e-06"
-        ixz="3.72834e-05"
-        iyy="0.011469"
-        iyz="-3.48279e-06"
-        izz="0.0199678"/>
+      <origin xyz="0.0651109 -0.0387301 0.0181534" rpy="0 0 0"/>
+      <mass value="1.25653"/>
+      <inertia ixx="0.012363" ixy="3.3165e-05" ixz="5.60471e-05" iyy="0.0124502" iyz="-0.00031169" izz="0.0213427"/>
     </inertial>
-  </link>
-
-  <joint name="base_to_body" type="fixed">
-    <parent link="base_link"/>
-    <child link="body_link"/>
-    <origin xyz="0 0 0" rpy="0 0 0"/>
-  </joint>
-
-    <!-- IMU frame -->
-  <link name="imu_link"/>
-  <joint name="body_to_imu" type="fixed">
-    <parent link="body_link"/>
-    <child link="imu_link"/>
-    <origin xyz="0.104686 -0.0488602 0.0542192" rpy="0 0 -1.5708"/>
-  </joint>
-
-  <!-- Raspberry Pi frame -->
-  <link name="raspberry_pi_link"/>
-  <joint name="body_to_raspberry_pi" type="fixed">
-    <parent link="body_link"/>
-    <child link="raspberry_pi_link"/>
-    <origin xyz="0.0653323 -0.0329298 0.0764926" rpy="-1.5708 0 3.14159"/>
-  </joint>
-
-  <!-- Battery frame -->
-  <link name="battery_link"/>
-  <joint name="body_to_battery" type="fixed">
-    <parent link="body_link"/>
-    <child link="battery_link"/>
-    <origin xyz="0.0655915 -0.0328291 -0.0242165" rpy="0 0 -3.14159"/>
-  </joint>
-
-  <!-- Rotor frames -->
-  <link name="rotor_1_link"/>
-  <joint name="body_to_rotor_1" type="fixed">
-    <parent link="body_link"/>
-    <child link="rotor_1_link"/>
-    <origin xyz="-0.0935326 0.126083 0.0744345" rpy="0 0 1.5708"/>
-  </joint>
-
-  <link name="rotor_2_link"/>
-  <joint name="body_to_rotor_2" type="fixed">
-    <parent link="body_link"/>
-    <child link="rotor_2_link"/>
-    <origin xyz="0.22428 0.126072 0.0744345" rpy="0 0 0"/>
-  </joint>
-
-  <link name="rotor_3_link"/>
-  <joint name="body_to_rotor_3" type="fixed">
-    <parent link="body_link"/>
-    <child link="rotor_3_link"/>
-    <origin xyz="0.22427 -0.191741 0.0744345" rpy="0 0 -1.5708"/>
-  </joint>
-
-  <link name="rotor_4_link"/>
-  <joint name="body_to_rotor_4" type="fixed">
-    <parent link="body_link"/>
-    <child link="rotor_4_link"/>
-    <origin xyz="-0.0935433 -0.19173 0.0744345" rpy="0 0 -3.14159"/>
-  </joint>
-  
-  <link name="body_link">
     <!-- Part esp32_dev_kit_v1 -->
     <visual>
       <origin xyz="0.0178007 -0.0308852 0.0523806" rpy="0 -0 -1.5708"/>
@@ -123,6 +55,22 @@
       <origin xyz="0.0653685 -0.0328291 0.000583504" rpy="-0 0 1.5708"/>
       <geometry>
         <mesh filename="package://f450_description/assets/bottom_plate.stl"/>
+      </geometry>
+    </collision>
+    <!-- Part camera_support -->
+    <visual>
+      <origin xyz="0.0658056 -0.104579 -0.0032165" rpy="0 0 -3.14159"/>
+      <geometry>
+        <mesh filename="package://f450_description/assets/camera_support.stl"/>
+      </geometry>
+      <material name="camera_support_material">
+        <color rgba="0.25098 0.25098 0.25098 1"/>
+      </material>
+    </visual>
+    <collision>
+      <origin xyz="0.0658056 -0.104579 -0.0032165" rpy="0 0 -3.14159"/>
+      <geometry>
+        <mesh filename="package://f450_description/assets/camera_support.stl"/>
       </geometry>
     </collision>
     <!-- Part mpu_9250 -->
@@ -235,6 +183,22 @@
       <origin xyz="-0.0329989 0.065549 0.0399845" rpy="-0 0 0.785398"/>
       <geometry>
         <mesh filename="package://f450_description/assets/arm.stl"/>
+      </geometry>
+    </collision>
+    <!-- Part leg -->
+    <visual>
+      <origin xyz="0.0183105 0.00715784 -0.000217496" rpy="-3.14159 0 0.785398"/>
+      <geometry>
+        <mesh filename="package://f450_description/assets/leg.stl"/>
+      </geometry>
+      <material name="leg_material">
+        <color rgba="0.25098 0.25098 0.25098 1"/>
+      </material>
+    </visual>
+    <collision>
+      <origin xyz="0.0183105 0.00715784 -0.000217496" rpy="-3.14159 0 0.785398"/>
+      <geometry>
+        <mesh filename="package://f450_description/assets/leg.stl"/>
       </geometry>
     </collision>
     <!-- Part top_plate -->
@@ -365,6 +329,22 @@
         <mesh filename="package://f450_description/assets/holybro_brushless_motor_2216_880kv.stl"/>
       </geometry>
     </collision>
+    <!-- Part logitech_c270b -->
+    <visual>
+      <origin xyz="0.0528721 -0.106185 -0.0215468" rpy="-1.5708 -0 0"/>
+      <geometry>
+        <mesh filename="package://f450_description/assets/logitech_c270b.stl"/>
+      </geometry>
+      <material name="logitech_c270b_material">
+        <color rgba="0.294118 0.294118 0.294118 1"/>
+      </material>
+    </visual>
+    <collision>
+      <origin xyz="0.0528721 -0.106185 -0.0215468" rpy="-1.5708 -0 0"/>
+      <geometry>
+        <mesh filename="package://f450_description/assets/logitech_c270b.stl"/>
+      </geometry>
+    </collision>
     <!-- Part holybro_brushless_motor_2216_880kv_3 -->
     <visual>
       <origin xyz="0.22427 -0.191741 0.0384345" rpy="-0 -0 0"/>
@@ -381,6 +361,22 @@
         <mesh filename="package://f450_description/assets/holybro_brushless_motor_2216_880kv.stl"/>
       </geometry>
     </collision>
+    <!-- Part leg_2 -->
+    <visual>
+      <origin xyz="0.105355 0.0142289 -0.000217496" rpy="-3.14159 -0 -0.785398"/>
+      <geometry>
+        <mesh filename="package://f450_description/assets/leg.stl"/>
+      </geometry>
+      <material name="leg_2_material">
+        <color rgba="0.25098 0.25098 0.25098 1"/>
+      </material>
+    </visual>
+    <collision>
+      <origin xyz="0.105355 0.0142289 -0.000217496" rpy="-3.14159 -0 -0.785398"/>
+      <geometry>
+        <mesh filename="package://f450_description/assets/leg.stl"/>
+      </geometry>
+    </collision>
     <!-- Part holybro_brushless_motor_2216_880kv_4 -->
     <visual>
       <origin xyz="-0.0935433 -0.19173 0.0384345" rpy="0 -0 -1.5708"/>
@@ -395,6 +391,38 @@
       <origin xyz="-0.0935433 -0.19173 0.0384345" rpy="0 -0 -1.5708"/>
       <geometry>
         <mesh filename="package://f450_description/assets/holybro_brushless_motor_2216_880kv.stl"/>
+      </geometry>
+    </collision>
+    <!-- Part leg_3 -->
+    <visual>
+      <origin xyz="0.0253816 -0.079887 -0.000217496" rpy="-3.14159 0 2.35619"/>
+      <geometry>
+        <mesh filename="package://f450_description/assets/leg.stl"/>
+      </geometry>
+      <material name="leg_3_material">
+        <color rgba="0.25098 0.25098 0.25098 1"/>
+      </material>
+    </visual>
+    <collision>
+      <origin xyz="0.0253816 -0.079887 -0.000217496" rpy="-3.14159 0 2.35619"/>
+      <geometry>
+        <mesh filename="package://f450_description/assets/leg.stl"/>
+      </geometry>
+    </collision>
+    <!-- Part logitech_c270c -->
+    <visual>
+      <origin xyz="0.0528721 -0.0398885 -0.011086" rpy="1.74533 -0 0"/>
+      <geometry>
+        <mesh filename="package://f450_description/assets/logitech_c270c.stl"/>
+      </geometry>
+      <material name="logitech_c270c_material">
+        <color rgba="0.294118 0.294118 0.294118 1"/>
+      </material>
+    </visual>
+    <collision>
+      <origin xyz="0.0528721 -0.0398885 -0.011086" rpy="1.74533 -0 0"/>
+      <geometry>
+        <mesh filename="package://f450_description/assets/logitech_c270c.stl"/>
       </geometry>
     </collision>
     <!-- Part arm_4 -->
@@ -427,6 +455,22 @@
       <origin xyz="0.22428 0.126072 0.0744345" rpy="-0 -0 0"/>
       <geometry>
         <mesh filename="package://f450_description/assets/1045_propeller.stl"/>
+      </geometry>
+    </collision>
+    <!-- Part leg_4 -->
+    <visual>
+      <origin xyz="0.112426 -0.0728159 -0.000217496" rpy="-3.14159 -0 -2.35619"/>
+      <geometry>
+        <mesh filename="package://f450_description/assets/leg.stl"/>
+      </geometry>
+      <material name="leg_4_material">
+        <color rgba="0.25098 0.25098 0.25098 1"/>
+      </material>
+    </visual>
+    <collision>
+      <origin xyz="0.112426 -0.0728159 -0.000217496" rpy="-3.14159 -0 -2.35619"/>
+      <geometry>
+        <mesh filename="package://f450_description/assets/leg.stl"/>
       </geometry>
     </collision>
     <!-- Part littlebee_spring30a_3 -->
